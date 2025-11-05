@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betti Video Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Betti Video Chat</h1>
+            <p>Secure peer-to-peer video calling</p>
+
+            <!-- Mobile/Permission Help Banner -->
+            <div id="mobile-help" class="help-banner">
+                <h3>📱 First time using this?</h3>
+                <p><strong>Allow camera/microphone access</strong> when your browser asks!</p>
+                <ul>
+                    <li>📱 <strong>Mobile:</strong> Tap "Allow" when prompted for camera/microphone</li>
+                    <li>🖥️ <strong>Desktop:</strong> Click "Allow" in the browser permission popup</li>
+                    <li>🔒 <strong>Need help?</strong> Check the connection log below for troubleshooting</li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <!-- Connection Setup -->
+            <div id="setup-section" class="section">
+                <div class="form-group">
+                    <label for="roomId">Room ID:</label>
+                    <input type="text" id="roomId" placeholder="Enter room ID" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="userId">Your Name:</label>
+                    <input type="text" id="userId" placeholder="Enter your name" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="cameraSelect">Camera:</label>
+                    <select id="cameraSelect" class="camera-select">
+                        <option value="">Loading cameras...</option>
+                    </select>
+                    <button id="refreshCamerasBtn" class="btn btn-small">Refresh</button>
+                </div>
+                <button id="joinBtn" class="btn btn-primary">Join Room</button>
+            </div>
+
+            <!-- Connection Status -->
+            <div id="status-section" class="section hidden">
+                <div class="status-indicator">
+                    <span id="connection-status" class="status">Disconnected</span>
+                    <span id="room-info"></span>
+                </div>
+                <button id="leaveBtn" class="btn btn-secondary">Leave Room</button>
+            </div>
+
+            <!-- Media Controls -->
+            <div id="media-controls" class="section hidden">
+                <button id="toggleVideoBtn" class="btn btn-control">
+                    <span class="icon">📹</span> Video: ON
+                </button>
+                <button id="toggleAudioBtn" class="btn btn-control">
+                    <span class="icon">🎤</span> Audio: ON
+                </button>
+            </div>
+
+            <!-- Video Container -->
+            <div id="video-container" class="hidden">
+                <div class="video-wrapper">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <div class="video-label">You</div>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                    <div class="video-label">Remote User</div>
+                </div>
+            </div>
+
+            <!-- Messages/Logs -->
+            <div id="messages-section" class="section">
+                <h3>Connection Log</h3>
+                <div id="messages" class="messages-container"></div>
+                <button id="clearLogsBtn" class="btn btn-small">Clear Logs</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>WebRTC Video Chat - Secure P2P Communication</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
