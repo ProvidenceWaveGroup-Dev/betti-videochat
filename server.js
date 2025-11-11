@@ -1,6 +1,6 @@
 require('dotenv').config();
 const WebSocket = require('ws');
-const https = require('https');
+const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
@@ -12,7 +12,7 @@ const options = {
   cert: fs.readFileSync('cert.pem')
 };
 
-const server = https.createServer(options, (req, res) => {
+const server = http.createServer((req, res) => {
   const filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
   const extname = path.extname(filePath);
 
